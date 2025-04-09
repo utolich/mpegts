@@ -170,9 +170,7 @@ class Parser extends EventEmitter
         $pointer += 4;
 
         $adaptationField = ($headBin >> 4) & 0x03;
-        $hasPayload = ($adaptationField & 0b01) === 0b01;
-
-        //Adaptation field payload is ignored (yet), we only care about payload (yet)
+        $hasPayload = $adaptationField & 0b1;
         if (!$hasPayload) {
             return;
         }
